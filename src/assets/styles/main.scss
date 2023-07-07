@@ -1,0 +1,20 @@
+@import "./__reset", "./__variables";
+
+html,
+body {
+  height: 100%;
+  font-family: var(--main-font);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+input {
+  font-family: var(--main-font);
+}
+
+.el-popper {
+  border-radius: 0px;
+}
