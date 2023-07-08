@@ -1,18 +1,24 @@
 import { type RouteRecordRaw } from "vue-router"
 
 import HomeView from "../views/HomeView.vue"
-import ItemsView from "../views/ItemsView.vue"
+import TabView from "../views/TabView.vue"
+import NotFoundView from "../views/NotFoundView.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",
-    name: "home",
+    name: "Home",
     component: HomeView
   },
   {
     path: "/categories/:slug",
-    name: "category",
-    component: ItemsView
+    name: "Tab",
+    component: TabView
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFoundView
   }
 ]
 

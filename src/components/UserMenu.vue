@@ -29,7 +29,7 @@
     title="Вход"
     v-model="modalVisible"
   >
-    <BaseAuth
+    <UserAuth
       :modalVisible="modalVisible"
       @closeModal="modalVisible = false"
     />
@@ -41,7 +41,7 @@ import { computed, ref } from "vue"
 import { useRouter } from "vue-router"
 
 import BaseModal from "./BaseModal.vue"
-import BaseAuth from "./BaseAuth.vue"
+import UserAuth from "./UserAuth.vue"
 import { useCategoriesStore, useAuthStore } from "../stores"
 
 const router = useRouter()

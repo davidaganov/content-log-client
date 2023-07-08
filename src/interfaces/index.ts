@@ -10,13 +10,7 @@ export interface AuthForm {
   password: string
 }
 
-export interface Categories {
-  _id: string
-  title: string
-  slug: string
-}
-
-export enum Tab {
+export enum TabSlug {
   Halfway = "halfway",
   Finished = "finished",
   Planned = "planned",
@@ -24,10 +18,22 @@ export enum Tab {
   Broken = "broken"
 }
 
+export interface Category {
+  _id: string
+  title: string
+  slug: string
+}
+
+export interface Tab {
+  _id: string
+  title: string
+  slug: TabSlug
+}
+
 export interface Item {
   category: string
   slug: string
-  tab: Tab
+  tab: TabSlug
   title: string
   createdBy: Date | string
   url: string

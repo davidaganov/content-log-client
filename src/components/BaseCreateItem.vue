@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { Tab, type Item } from "../interfaces"
+import { TabSlug, type Item } from "../interfaces"
 import { type FormInstance } from "element-plus"
 
 import { ref } from "vue"
@@ -42,7 +42,7 @@ import { useCategoriesStore } from "../stores"
 import { useTransliterate } from "../composables/useTransliterate"
 import { addItem } from "../services/items"
 
-const props = defineProps<{ tab: Tab }>()
+const props = defineProps<{ tab: TabSlug }>()
 
 const route = useRoute()
 const categoriesStore = useCategoriesStore()

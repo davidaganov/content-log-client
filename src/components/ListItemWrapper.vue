@@ -1,6 +1,6 @@
 <template>
   <li class="item">
-    <BaseEditItem
+    <ListItem
       class="item-row"
       @openModal="modalVisible = true"
       @updateTitle="updateTitle"
@@ -12,7 +12,7 @@
       title="Редактирование"
       v-model="modalVisible"
     >
-      <BaseEditOptions
+      <ListItemOptions
         :item="item"
         :modalVisible="modalVisible"
         @closeModal="modalVisible = false"
@@ -29,8 +29,8 @@ import { ref, toRaw } from "vue"
 import { useRoute } from "vue-router"
 
 import BaseModal from "./BaseModal.vue"
-import BaseEditItem from "./BaseEditItem.vue"
-import BaseEditOptions from "./BaseEditOptions.vue"
+import ListItem from "./ListItem.vue"
+import ListItemOptions from "./ListItemOptions.vue"
 import { useCategoriesStore } from "../stores"
 import { updateItem } from "../services/items"
 import { useTransliterate } from "../composables/useTransliterate"

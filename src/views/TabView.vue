@@ -1,11 +1,11 @@
 <template>
   <el-main>
-    <BaseItems />
+    <BlockTab />
   </el-main>
 </template>
 
 <script setup lang="ts">
-import BaseItems from "../components/BaseItems.vue"
+import BlockTab from "../components/BlockTab.vue"
 </script>
 
 <style scoped></style>

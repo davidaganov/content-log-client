@@ -11,13 +11,13 @@
           :label="title"
           :name="slug"
           :key="slug"
-          v-for="{ title, slug } in tabs"
+          v-for="{ title, slug } in categoriesStore.getTabs"
         >
           <BaseCreateItem :tab="slug" />
 
-          <BaseList
-            :items="data"
-            v-if="items.data && items.data.length !== 0"
+          <ListContainer
+            :items="getItems()"
+            v-if="items.data"
           />
         </el-tab-pane>
       </el-tabs>
@@ -26,54 +26,41 @@
 </template>
 
 <script setup lang="ts">
-import { Tab } from "../interfaces"
+import { watch, ref, onMounted } from "vue"
+import { useRoute, useRouter } from "vue-router"
 
-import { watch, computed, ref, onMounted } from "vue"
-import { useRoute } from "vue-router"
-
-import BaseList from "./BaseList.vue"
+import ListContainer from "./ListContainer.vue"
 import BaseCreateItem from "./BaseCreateItem.vue"
 import { useCategoriesStore } from "../stores"
 
 const route = useRoute()
+const router = useRouter()
 const categoriesStore = useCategoriesStore()
 
-const activeTab = ref("finished")
-const tabs = [
-  {
-    title: "В процессе",
-    slug: Tab.Halfway
-  },
-  {
-    title: "Завершено",
-    slug: Tab.Finished
-  },
-  {
-    title: "Запланировано",
-    slug: Tab.Planned
-  },
-  {
-    title: "Отложено",
-    slug: Tab.Delayed
-  },
-  {
-    title: "Брошено",
-    slug: Tab.Broken
-  }
-]
+const activeTab = ref("halfway")
 
-const items = computed(() => categoriesStore.getItems)
-const data = computed(() => items.value.data.filter((item) => item.tab === activeTab.value))
+const items = ref(categoriesStore.getItems)
 
 const fetchItems = () => {
-  categoriesStore.setItems(route.params.slug.toString())
+  const category = route.params.slug.toString()
+  const categories = ["anime", "games", "cartoons", "series", "movies"]
+
+  if (categories.find((item) => item === category)) {
+    categoriesStore.setItems(category)
+  } else {
+    router.push("/404")
+  }
+}
+
+const getItems = () => {
+  return items.value.data.filter((item) => item.tab === activeTab.value)
 }
 
 onMounted(fetchItems)
 
 watch(
   () => route.params.slug,
-  () => fetchItems()
+  () => (route.params.slug ? fetchItems() : null)
 )
 </script>
 

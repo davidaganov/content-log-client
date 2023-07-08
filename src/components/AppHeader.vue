@@ -1,13 +1,13 @@
 <template>
   <el-header class="header">
-    <TheNavbar />
-    <BaseUserMenu />
+    <AppNavbar />
+    <UserMenu />
   </el-header>
 </template>
 
 <script setup lang="ts">
-import TheNavbar from "./TheNavbar.vue"
-import BaseUserMenu from "./BaseUserMenu.vue"
+import AppNavbar from "./AppNavbar.vue"
+import UserMenu from "./UserMenu.vue"
 </script>
 
 <style scoped lang="scss">
