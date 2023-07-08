@@ -43,7 +43,7 @@ const items = ref(categoriesStore.getItems)
 
 const fetchItems = () => {
   const category = route.params.slug.toString()
-  const categories = ["anime", "games", "cartoons", "series", "movies"]
+  const categories = ["anime", "games", "cartoons", "series", "animated-series", "movies"]
 
   if (categories.find((item) => item === category)) {
     categoriesStore.setItems(category)
