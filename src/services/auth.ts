@@ -25,7 +25,7 @@ export const useAuth = async ({ method, username, password }: Request): Response
 
   if (res.ok) {
     const json = await res.json()
-    document.cookie = `token=${json.token}; path=/; secure; SameSite=Strict`
+    localStorage.setItem("token", json.token)
 
     return { username: json.username, message: json.message }
   } else {
