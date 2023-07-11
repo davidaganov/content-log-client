@@ -17,4 +17,7 @@ input {
 
 .el-popper {
   border-radius: 0px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

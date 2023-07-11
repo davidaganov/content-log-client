@@ -16,5 +16,6 @@ import UserMenu from "./UserMenu.vue"
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 15px;
+  // border-bottom: solid 1px var(--el-menu-border-color);
 }
 </style>

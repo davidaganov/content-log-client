@@ -37,3 +37,9 @@ const categoriesStore = useCategoriesStore()
 const categories = computed(() => categoriesStore.getCategories)
 const activeMenu = computed(() => route.path)
 </script>
+
+<style scoped lang="scss">
+.el-menu {
+  border: none;
+}
+</style>

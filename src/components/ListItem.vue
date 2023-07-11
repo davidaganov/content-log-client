@@ -16,6 +16,7 @@
         </h3>
 
         <el-rate
+          class="block-rating"
           disabled
           :model-value="item.rating"
           :colors="['#A7713E', '#F7BA2A', '#FF9900']"
@@ -56,6 +57,14 @@
             >
               Описание отсутствует
             </p>
+
+            <el-rate
+              class="more-rating"
+              disabled
+              :model-value="item.rating"
+              :colors="['#A7713E', '#F7BA2A', '#FF9900']"
+              v-if="item.rating !== 0"
+            />
 
             <div class="more-bottom">
               <el-link
@@ -220,13 +229,24 @@ const removeItem = async () => {
 
 .block {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: 34px 1fr auto auto;
   grid-template-rows: 0fr;
   align-items: center;
   gap: 12px;
   &-title {
     color: var(--el-text-color-primary);
     font-size: var(--el-font-size-base);
+    word-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &-rating {
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &-more {
@@ -261,15 +281,23 @@ const removeItem = async () => {
 
   &-description {
     max-width: 85%;
-    margin-bottom: 25px;
     color: var(--el-text-color-primary);
     word-wrap: break-word;
+    @media (min-width: 769px) {
+      margin-bottom: 25px;
+    }
+    @media (max-width: 768px) {
+      margin-bottom: 10px;
+    }
   }
 
   &-bottom {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
+    @media (max-width: 768px) {
+      margin-top: 15px;
+    }
   }
 
   &-link {

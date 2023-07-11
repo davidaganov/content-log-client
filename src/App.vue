@@ -1,11 +1,9 @@
 <template>
-  <div class="common-layout">
-    <el-container class="is-vertical">
-      <AppHeader />
-      <RouterView />
-      <AppFooter />
-    </el-container>
-  </div>
+  <el-container class="is-vertical">
+    <AppHeader />
+    <RouterView />
+    <AppFooter />
+  </el-container>
 </template>
 
 <script setup lang="ts">
@@ -24,4 +22,9 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.el-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+</style>

@@ -71,7 +71,6 @@ const useLogout = () => {
   display: flex;
   align-items: center;
   height: 100%;
-  border-bottom: solid 1px var(--el-menu-border-color);
 }
 
 .btn {
