@@ -7,8 +7,10 @@ const config = {
   }
 }
 
+const apiUrl = import.meta.env.VITE_API_URL
+
 export const getCategories = async (): Promise<Category[] | undefined> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/categories`, config)
+  const res = await fetch(`${apiUrl}/categories`, config)
 
   if (res.ok) {
     const categories = await res.json()
@@ -17,7 +19,7 @@ export const getCategories = async (): Promise<Category[] | undefined> => {
 }
 
 export const getTabs = async (): Promise<Tab[] | undefined> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/tabs`, config)
+  const res = await fetch(`${apiUrl}/tabs`, config)
 
   if (res.ok) {
     const tabs = await res.json()

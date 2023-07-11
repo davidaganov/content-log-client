@@ -6,6 +6,9 @@ interface Config {
   token: string
 }
 
+const apiUrl = import.meta.env.VITE_API_URL
+const token = getToken()
+
 const config = ({ method = "POST", token }: Config) => {
   return {
     method,
@@ -18,10 +21,8 @@ const config = ({ method = "POST", token }: Config) => {
 }
 
 export const getItems = async (category: string): Promise<Item[] | undefined> => {
-  const token = getToken()
-
   if (token) {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/categories/sorted-items`, {
+    const res = await fetch(`${apiUrl}/categories/sorted-items`, {
       ...config({ token }),
       body: JSON.stringify({ category })
     })
@@ -33,10 +34,8 @@ export const getItems = async (category: string): Promise<Item[] | undefined> =>
 }
 
 export const addItem = async (item: Item) => {
-  const token = getToken()
-
   if (token) {
-    await fetch(`${import.meta.env.VITE_API_URL}/categories/items`, {
+    await fetch(`${apiUrl}/categories/items`, {
       ...config({ token }),
       body: JSON.stringify({ ...item })
     })

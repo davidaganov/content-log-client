@@ -14,9 +14,11 @@ const config = {
   }
 }
 
+const apiUrl = import.meta.env.VITE_API_URL
+
 export const useAuth = async ({ method, username, password }: Request): Response => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/auth/${method === "login" ? "login" : "reg"}`,
+    `${apiUrl}/auth/${method === "login" ? "login" : "reg"}`,
     {
       ...config,
       body: JSON.stringify({ username, password })
